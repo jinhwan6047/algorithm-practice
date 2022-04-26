@@ -1,8 +1,8 @@
-package no11399_ATM;
+package baekjoon_Algorithm;
 
 import java.util.Scanner;
 
-public class Main {
+public class No11399_ATM {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -35,6 +35,8 @@ public class Main {
 		}
 		
 		System.out.println(sum);
+	
+
 	}
 
 }
