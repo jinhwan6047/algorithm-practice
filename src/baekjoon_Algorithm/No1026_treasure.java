@@ -40,7 +40,6 @@ public class No1026_treasure {
 			}
 		}
 		
-		System.out.println(sum);		
 		for(int i=0; i<n; i++) {
 			num=0;
 			for(int j=0; j<n; j++) {
@@ -50,7 +49,7 @@ public class No1026_treasure {
 			}
 			c[num] = i+1;
 		}
-		
+
 		for(int i=0; i<n; i++) {
 			if(c[i] != 0) {
 				sum += a[i]*b[c[i]-1];				
