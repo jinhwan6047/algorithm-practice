@@ -13,7 +13,7 @@ public class Kakao_81301Re {
 		String[] after = {"1","2","3","4","5","6","7","8","9","0"};
 
 		for(int i=0; i<before.length; i++) {
-			s=s.replaceAll(before[i], after[i]);
+			s=s.replace(before[i], after[i]);
 		}
 		answer = Integer.valueOf(s);
 		System.out.println(answer);
