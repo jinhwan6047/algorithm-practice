@@ -1,4 +1,5 @@
 // https://programmers.co.kr/learn/courses/30/lessons/81301
+// 다른사람 풀이 방식
 package programmers;
 
 public class Kakao_81301Re {
