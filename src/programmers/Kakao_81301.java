@@ -6,7 +6,7 @@ public class Kakao_81301 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int answer = 0;
-		String s = "123";
+		String s = "one1two2three3fourfive";
 		String[] arr = s.split("");
 		String str= "";
 		String strSum = "";
