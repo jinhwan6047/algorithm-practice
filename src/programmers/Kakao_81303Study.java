@@ -5,7 +5,7 @@ package programmers;
 
 import java.util.Stack;
 
-public class Kakao_81303 {
+public class Kakao_81303Study {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
