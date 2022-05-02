@@ -1,91 +1,61 @@
 //https://programmers.co.kr/learn/courses/30/lessons/81303
+//https://onlyfor-me-blog.tistory.com/317 풀이
+//공부를 위해 코드 분석
 package programmers;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class Kakao_81303 {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 String answer = "";
-		 int n=8;
-		 String[] result = new String[n];
-		 Arrays.fill(result, "O");
-		 int count = n;
-		 int k=2;
-		 int sel = k-1;
-		 String[] cmd={"D 2","C","U 3","C","D 4","C","U 2","Z","Z"};
-		 String[] action;
-		 
-		 Stack<Integer> stack = new Stack<Integer>();
-		 
-		 
-		 
-		 LinkedList<Integer> li = new LinkedList<Integer>();
-		 for(int i=0; i<n; i++) {
-			 li.add(i);
-		 }
-		 
-		 for(int i=0; i<cmd.length; i++) {
-			 action = cmd[i].split(" ");
-			 
-			 if(action[0].equals("D")) {
-				 sel += Integer.valueOf(action[1]);
-			 }else if(action[0].equals("U")) {
-				 sel -= Integer.valueOf(action[1]);
-			 }else if(action[0].equals("C")) {
-				 result[li.get(sel)] = "X";
-				 stack.push(li.get(sel));
-				 li.remove(sel);
-				 count--;
-				 if(sel>count) {
-					sel--;
-				 }
-			 }else if(action[0].equals("Z")) {
-				 int insert = stack.pop();
-				 li.add(insert, insert);
-				 result[insert] = "O";
-				 count++;
-			 }
-		 }
-		 
-		 for(int i=0; i<n; i++) {
-			 answer += result[i];
-		 }
-		 
-		 System.out.println(answer);
+		int n = 8;
+		int k = 2;
+		String[] cmd = {"D 2","C","U 3","C","D 4","C","U 2","Z","Z"};
+		
+		
+		System.out.println(solution(n, k, cmd));
 	}
+	
+	
+	public static String solution(int n, int k, String[] cmd) {
+		
+		StringBuilder sb = new StringBuilder(); //String 객체끼리 더할때 구조상 새로운 문자열을 생성하기 때문에 메모리 할당 문제로 비효율적이기에 StringBuilder 사용
+	    Stack<Integer> stack = new Stack<>(); //삭제한 항목 저장
+	    int tableSize = n; // 표의 행 갯수
 
+	    for (String s : cmd) {
+	      char op = s.charAt(0); // cmd에서 배열 순서대로 명령어를 읽어옴
+
+	      if (op == 'C') { // cmd명령어 중  삭제 일때
+	        stack.push(k); //stack에 선택된 행의 값을 넣음
+	        tableSize--; // 표의 행의수를 하나 줄임
+	        if (k == tableSize) { // 표의 행의수와 선택된 행의 값이 같을때 -> k도 0부터 시작하고 표의 행도 0부터 시작이기 때문 
+	          k--; // k 하나 줄임
+	        }
+	      } else if (op == 'Z') { // cmd명령어 중 복구일때
+	        int undoRow = stack.pop(); //삭제된 항목을 undoRow에 삽입
+	        if (k >= undoRow) { //undoRow보다 k가 크거나 같으면
+	          k++; //k 하나 올림
+	        }
+	        tableSize++; //표 행의 수하나 올림
+	      } else if (op == 'D') { // cmd명령어 중  D일때 
+	        k = (k + Integer.parseInt(s.split(" ")[1])) % tableSize; //*테이블사이즈는 0부터 행 시작
+	      } else {
+	        k = (k - Integer.parseInt(s.split(" ")[1])) % tableSize;
+	      }
+	    }
+
+	    for(int i = 0; i < tableSize; i++) {
+	      sb.append("O");
+	    }
+
+	    while(!stack.isEmpty()) {
+	      sb.insert(stack.pop(), "X");
+	    }
+
+	    return sb.toString();
+	}
+	
+	
 }
-
-//		 for(int i=0; i<cmd.length; i++) {
-//			 action = cmd[i].split(" ");
-//			 
-//			 if(action[0].equals("D")) {
-//				 k += Integer.valueOf(action[1]);
-//			 }else if(action[0].equals("U")) {
-//				 k -= Integer.valueOf(action[1]);
-//			 }else if(action[0].equals("C")) {
-//				 stack.push(k-1);
-//				 map.put(k-1, k-1);
-//				 count--;
-//				 if(k>count) {
-//					 k--;
-//				 }
-//			 }else if(action[0].equals("Z")) {
-//				 map.remove(stack.pop());
-//				 count++;
-//			 }
-//			 
-//			 //System.out.println("k : "+k+", count : "+ count);
-//		 }
-
-//		 for(int i=0; i<n; i++) {
-//			 if(map.containsKey(i)) {
-//				 answer += "X";
-//			 }else {
-//				 answer += "O";
-//			 }
-//		 }
