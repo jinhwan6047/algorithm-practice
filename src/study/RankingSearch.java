@@ -1,5 +1,7 @@
 package study;
 
+import java.util.HashMap;
+
 public class RankingSearch {
 
 	public static void main(String[] args) {
@@ -28,13 +30,32 @@ public class RankingSearch {
 	}
 
 	public int[] solution(String[] info, String[] query) {
-		//1. info배열을 hashmap에 문자와 숫자로 구분해서 저장, 띄어쓰기를 구분자로 4번째 배열이 점수
-		//query를 and 구분자로 hashmap에 저장  4번째 배열이 점수
+		//1. info 배열을 HashMap에 넣는다 key:문자열 value:점수
+		// 1) 항목이 "-" 일때 도 포함하여 infoHash 작성
+		HashMap<String, Integer> infoHash = new HashMap<>();
 		for(int i=0; i<info.length; i++) {
-			String[] info2 = info[i].split(" ");			
+			String[] str = info[i].split(" ");
+			String[] language = {"-",str[0]};
+			String[] position = {"-",str[1]};
+			String[] experance = {"-",str[2]};
+			String[] favoriteFood = {"-",str[3]};
+			String sumStr="";
+			for(String lan : language) {
+				for(String posi : position) {
+					for(String exp : experance) {
+						for(String food : favoriteFood) {
+							sumStr = lan+posi+exp+food;
+							infoHash.put(sumStr, Integer.valueOf(str[str.length-1]));
+						}
+					}
+				}
+			}
 		}
-		//2. query의 key에 해당하는 info key를 찾아 value비교
-		//3. 비교된 결과를 answer에 담아 준다
+		System.out.println(infoHash.keySet());
+		System.out.println(infoHash.values());
+		//2. query를 info의 key값과 같이 재작성, 점수는 다른 변수 만들어서 저장
+		//3. query에 만족하는 infoHash의 key가 있는지 확인
+		//4. answer에 검색결과 반영
 		int[] answer = {};
         return answer;
     }
