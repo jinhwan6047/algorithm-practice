@@ -5,11 +5,10 @@ import java.util.Collections;
 
 public class SelectionSort {
 	public ArrayList<Integer> selectionSort(ArrayList<Integer> randomData){
-		Integer lowNum = null;
 		
 		for(int i=0; i<randomData.size(); i++) {
-			for(int j=i; j<randomData.size(); j++) {
-				lowNum = j;
+			Integer lowNum = i;
+			for(int j=i+1; j<randomData.size(); j++) {
 				if(randomData.get(lowNum)>randomData.get(j)) {
 					lowNum = j;
 				}
@@ -30,9 +29,9 @@ public class SelectionSort {
 		System.out.println(randomData.toString());
 		
 		//정렬 실행
-		BubbleSort bs = new BubbleSort();
+		SelectionSort ss = new SelectionSort();
 		//정렬결과
-		System.out.println(bs.bubbleSort(randomData).toString());
+		System.out.println(ss.selectionSort(randomData).toString());
 
 	}
 
