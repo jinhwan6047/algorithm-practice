@@ -32,6 +32,7 @@ public class BubbleSort {
 		
 		//버블정렬 실행
 		BubbleSort bs = new BubbleSort();
+		//정렬결과
 		System.out.println(bs.bubbleSort(randomData).toString());
 
 	}
