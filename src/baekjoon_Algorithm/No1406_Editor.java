@@ -1,18 +1,16 @@
 package baekjoon_Algorithm;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class No1406_Editor {
 	
 	public static void main(String[] args) throws IOException {
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    StringBuilder sb = new StringBuilder();
 	    LinkedList<Character> editor = new LinkedList<Character>();
 	    
 	    String str = br.readLine();
@@ -50,8 +48,9 @@ public class No1406_Editor {
 		}
 
 		for(Character chr : editor) {
-			bw.write(chr);
+			sb.append(chr);
 		}
-		bw.flush();
+
+		System.out.println(sb);
 	}
 }
