@@ -10,35 +10,33 @@ public class No17103_GoldbachPartition {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//소수 배열 만들기 -> 소수 : false
+		boolean[] isPrime = new boolean[1000001];
+		
+		isPrime[0] = isPrime[1] = true;
+		for(int i=2; i<isPrime.length; i++) {
+			if(!isPrime[i]) {
+				for(int j=i+i; j<isPrime.length; j+=i) {
+					isPrime[j] = true;
+				}				
+			}
+		}
+		
 		int n = Integer.parseInt(br.readLine());
 		
 		for(int i=0; i<n; i++) {
-			int number = Integer.parseInt(br.readLine());
-			int cnt = 0;
-			int chkNum = number - 3;
-			while(chkNum>=(number/2)) {
-				if(isPrime(chkNum)) {
-					if(isPrime(number-chkNum)) {
-						cnt++;
-					}
+			int num = Integer.parseInt(br.readLine());
+			int chkNum = num-1;
+			int cnt=0;
+			while(chkNum>=num/2) {
+				if(!isPrime[chkNum]&&!isPrime[num-chkNum]) {
+					cnt++;
 				}
-				chkNum -= 2;
+				chkNum--;
 			}
 			sb.append(cnt).append("\n");
 		}
-		
 		System.out.println(sb);
-		
-	}
-	
-
-	
-	static boolean isPrime(int temp) {
-		for(int i=2; i<=Math.sqrt(temp); i++) {
-			if(temp % i == 0) {
-				return false;
-			}
-		}
-		return true;
-	}
+	}	 
 }
