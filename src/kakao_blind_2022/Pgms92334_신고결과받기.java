@@ -1,4 +1,4 @@
-package kakaoBlindRecruitment_2022;
+package kakao_blind_2022;
 
 import java.util.HashMap;
 import java.util.HashSet;

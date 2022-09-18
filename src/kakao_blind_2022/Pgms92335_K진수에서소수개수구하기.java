@@ -1,4 +1,4 @@
-package kakaoBlindRecruitment_2022;
+package kakao_blind_2022;
 
 public class Pgms92335_K진수에서소수개수구하기 {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package kakaoBlindRecruitment_2022;
+package kakao_blind_2022;
 
 
 public class Pgms92344_파괴되지않은건물 {
